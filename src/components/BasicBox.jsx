@@ -89,18 +89,6 @@ export default function BasicBox({ title, listIndex }) {
           {lists[listIndex].map((each, index) => {
             return (
               <>
-                {/* <Card
-                  draggable={true}
-                  onDragStart={(e) => handleDragStart(e, index, listIndex)}
-                  onDragOver={handleDragOver}
-                  className='flex justify-around items-center m-2 h-10 w-4/5 whitespace-nowrap rounded-md text-sm font-medium'
-                  key={index}
-                >
-                  {each}
-                  <Button variant='outline' size='sm'>
-                    EDIT
-                  </Button>
-                </Card> */}
                 <EditableCard
                   draggable={true}
                   onDragStart={(e) => handleDragStart(e, index, listIndex)}
