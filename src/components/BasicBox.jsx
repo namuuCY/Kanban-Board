@@ -21,6 +21,25 @@ export default function BasicBox({ title, listIndex }) {
     }
   }
 
+  function editTodo(reference, index) {
+    const editTodo = reference.current.value
+    console.log(editTodo)
+    if (editTodo.length !== 0) {
+      const changed = produce(lists, (draft) => {
+        draft[listIndex][index] = editTodo
+      })
+      setLists(changed)
+    }
+  }
+
+  function removeTodo(index) {
+    const changed = produce(lists, (draft) => {
+      draft[listIndex].splice(index, 1)
+    })
+    console.log(changed)
+    setLists(changed)
+  }
+
   const handleDragStart = (e, index, prevListIndex) => {
     const prev = { prevListIndex, prevItemIndex: index }
     e.dataTransfer.clearData()
@@ -70,7 +89,7 @@ export default function BasicBox({ title, listIndex }) {
           {lists[listIndex].map((each, index) => {
             return (
               <>
-                <Card
+                {/* <Card
                   draggable={true}
                   onDragStart={(e) => handleDragStart(e, index, listIndex)}
                   onDragOver={handleDragOver}
@@ -81,13 +100,22 @@ export default function BasicBox({ title, listIndex }) {
                   <Button variant='outline' size='sm'>
                     EDIT
                   </Button>
-                </Card>
+                </Card> */}
+                <EditableCard
+                  draggable={true}
+                  onDragStart={(e) => handleDragStart(e, index, listIndex)}
+                  onDragOver={handleDragOver}
+                  className='flex justify-around items-center m-2 h-10 w-4/5 whitespace-nowrap rounded-md text-sm font-medium'
+                  index={index}
+                  editEvent={editTodo}
+                  removeEvent={removeTodo}
+                  reference={inputRef}
+                >
+                  {each}
+                </EditableCard>
               </>
             )
           })}
-          {/* <EditableCard event={addTodo} reference={inputRef}>
-            테스트중
-          </EditableCard> */}
         </Card>
       </Card>
     </>
