@@ -25,6 +25,7 @@ export default function EditableCard({
     <>
       {edit ? (
         <Input
+          className='flex justify-between items-center max-w-full m-4 h-10 w-11/12 whitespace-normal rounded-md text-sm font-medium'
           ref={reference}
           onKeyDown={(e) => {
             if (e.code === 'Enter' && e.nativeEvent.isComposing === false) {
@@ -36,8 +37,8 @@ export default function EditableCard({
         ></Input>
       ) : (
         <>
-          <ContextMenu className='flex justify-between items-center m-2 h-10 w-4/5 whitespace-nowrap rounded-md text-sm font-medium'>
-            <ContextMenuTrigger className='flex justify-between items-center m-2 h-10 w-4/5 whitespace-nowrap rounded-md text-sm font-medium'>
+          <ContextMenu className='flex justify-between items-center m-2 h-10 w-4/5 whitespace-normal rounded-md text-sm font-medium'>
+            <ContextMenuTrigger className='flex justify-center m-2 h-10 w-4/5 whitespace-normal rounded-md text-sm font-medium'>
               <ContextMenuContent>
                 <ContextMenuItem
                   onClick={(e) => {
@@ -49,33 +50,12 @@ export default function EditableCard({
                 <ContextMenuItem onClick={(e) => removeEvent(index)}>Delete to do </ContextMenuItem>
               </ContextMenuContent>
               <Card
-                className='flex justify-between items-center m-2 h-10 w-4/5 whitespace-nowrap rounded-md text-sm font-medium'
+                className='flex justify-between items-center max-w-full m-2 h-10 w-11/12 whitespace-normal rounded-md text-sm font-medium'
                 draggable={draggable}
                 onDragStart={onDragStart}
                 onDragOver={onDragOver}
               >
-                <span className='ml-2'>{children}</span>
-
-                {/* <div className='flex items-center mr-1'>
-                  <Button
-                    variant='outline'
-                    size='sm'
-                    className='text-xs'
-                    onClick={(e) => {
-                      setEdit(!edit)
-                    }}
-                  >
-                    EDIT
-                  </Button>
-                  <Button
-                    variant='outline'
-                    size='icon'
-                    className='text-xs'
-                    onClick={(e) => removeEvent(index)}
-                  >
-                    ❌
-                  </Button>
-                </div> */}
+                <span className='ml-4'>{children}</span>
               </Card>
             </ContextMenuTrigger>
           </ContextMenu>

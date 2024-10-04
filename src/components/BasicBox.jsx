@@ -23,7 +23,6 @@ export default function BasicBox({ title, listIndex }) {
 
   function editTodo(reference, index) {
     const editTodo = reference.current.value
-    console.log(editTodo)
     if (editTodo.length !== 0) {
       const changed = produce(lists, (draft) => {
         draft[listIndex][index] = editTodo
@@ -36,7 +35,6 @@ export default function BasicBox({ title, listIndex }) {
     const changed = produce(lists, (draft) => {
       draft[listIndex].splice(index, 1)
     })
-    console.log(changed)
     setLists(changed)
   }
 
