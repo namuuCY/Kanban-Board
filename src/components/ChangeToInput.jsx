@@ -9,7 +9,7 @@ export default function ChangeToInput({ children, event, reference }) {
     <>
       {typed ? (
         <Input
-          className='w-4/5'
+          className='w-4/5 m-2'
           placeholder={'Input todo'}
           ref={reference}
           onKeyDown={(e) => {
@@ -21,7 +21,7 @@ export default function ChangeToInput({ children, event, reference }) {
         ></Input>
       ) : (
         <Button
-          className='w-4/5'
+          className='w-4/5 m-2'
           onClick={(e) => {
             setTyped(!typed)
           }}

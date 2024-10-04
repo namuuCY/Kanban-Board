@@ -1,5 +1,5 @@
 import { useState, createContext } from 'react'
-import '@/App.css'
+import '@/index.css'
 import BasicBox from '@/components/BasicBox'
 
 const defaultObject = {
